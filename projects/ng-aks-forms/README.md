@@ -106,6 +106,10 @@ export interface Validations {
 }
 ```
 
+## Dependencies
+
+Please add `"bootstrap": "^5.3.3"` by run command `npm install bootstrap@5.3.3`. After install it, please add css on global style file >> `@import '~bootstrap/dist/css/bootstrap.min.css';`
+
 ## Further help
 
 To get more help on the this , please contact to [Ankit Kumar Sharma](https://www.ankitkumarsharma.com/)
