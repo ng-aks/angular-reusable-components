@@ -1,0 +1,26 @@
+<form [formGroup]="dynamicFormGroup" (ngSubmit)="onSubmit()">
+  <div *ngFor="let control of formConfig">
+    <div [ngSwitch]="control.type">
+      <div *ngSwitchCase="'select'">
+        <label>{{control.label}}</label>
+        <select [formControlName]="control.name">
+          <option *ngFor="let option of control.options" [value]="option.value">
+            {{option.label}}
+          </option>
+        </select>
+      </div>
+      <div *ngSwitchCase="'textarea'">
+        <label>{{control.label}}</label>
+        <textarea [formControlName]="control.name"></textarea>
+      </div>
+      <div *ngSwitchDefault>
+        <label>{{control.label}}</label>
+        <input [type]="control.type" [formControlName]="control.name">
+      </div>
+    </div>
+    <span *ngIf="dynamicFormGroup.controls[control.name]?.invalid && dynamicFormGroup.controls[control.name]?.touched">
+      {{getErrorMessage(control)}}
+    </span>
+  </div>
+  <button type="submit">Submit</button>
+</form>
