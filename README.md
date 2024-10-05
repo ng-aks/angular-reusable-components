@@ -20,7 +20,7 @@ import { NgAksFormsModule } from '@ng-aks/forms';
 now you have to add html part like this
 
 ```html
-<ng-aks-forms [formConfig]="formConfig"></ng-aks-forms>
+<ng-aks-forms (onSubmitForm)="onSubmitForm($event)" [formConfig]="formConfig"></ng-aks-forms>
 ```
 After add html part, add `formConfig` in your `.ts` file like this.
 ```ts
@@ -84,27 +84,11 @@ export const FORM_CONFIG = [
   ];
 ```
 the above data, you can use your api data or constant data as per your requirement.
-Please make sure, you are using correct data format wit below model
-```ts
-export interface NgAksFormsConfigModel {
-    type: "text" | "number" | "select" | "radio" | "checkbox" | "textarea" | "date",
-    label: string,
-    name: string,
-    value: string | number | boolean,
-    options?: Options[];
-    validations: Validations[]
-}
+Please make sure, you are using correct data format.
 
-export interface Options {
-    label: string,
-    value: number | string | boolean
-}
-export interface Validations {
-    name: string,
-    validator: string,
-    message: string
-}
-```
+## Dependencies
+
+Please add `"bootstrap": "^5.3.3"` by run command `npm install bootstrap@5.3.3`. After install it, please add css on global style file >> `@import '~bootstrap/dist/css/bootstrap.min.css';`
 
 ## Further help
 
