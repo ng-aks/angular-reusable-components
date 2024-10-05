@@ -1,5 +1,5 @@
 export interface NgAksFormsConfigModel {
-    type: "text" | "number" | "select" | "radio" | "checkbox" | "textarea" | "date",
+    type: string,
     label: string,
     name: string,
     value: string | number | boolean,

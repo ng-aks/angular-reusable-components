@@ -1,2 +1,3 @@
 Dynamic Forms
-<ng-aks-forms [formConfig]="formConfig"></ng-aks-forms>
+<ng-aks-forms [IsGetForm]="isGetForm" (getForm)="getForm($event)" (onSubmitForm)="onSubmitForm($event)" [formConfig]="formConfig"></ng-aks-forms>
+<button (click)="onGetForm()" class="btn btn-primary" type="submit">Get Form</button>
