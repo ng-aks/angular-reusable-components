@@ -7,19 +7,12 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   title = 'example';
   formConfig = FORM_CONFIG;
   formGroup!: FormGroup;
-  isGetForm: boolean = false;
 
-  ngAfterViewInit(): void {
-    this.isGetForm = true;
-  }
   onSubmitForm(e: any) {
-    console.log("form value", e);
-  }
-  getForm(e: any) {
     this.formGroup = e;
   }
   onGetForm() {

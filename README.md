@@ -20,13 +20,26 @@ import { NgAksFormsModule } from '@ng-aks/forms';
 now you have to add html part like this
 
 ```html
-<ng-aks-forms (onSubmitForm)="onSubmitForm($event)" [formConfig]="formConfig"></ng-aks-forms>
+<ng-aks-forms [formConfig]="formConfig" (onSubmitForm)="onSubmitForm($event)">
+    <button (click)="onGetForm()" class="btn btn-primary" type="submit">Submit</button>
+</ng-aks-forms>
 ```
 After add html part, add `formConfig` in your `.ts` file like this.
 ```ts
 export class AppComponent {
-  title = 'example';
-  formConfig = FORM_CONFIG
+  formConfig = FORM_CONFIG;
+  formGroup!: FormGroup;
+
+  onSubmitForm(e: any) {
+    this.formGroup = e;
+  }
+  onGetForm() {
+    if (this.formGroup.valid) {
+      console.log("form value", this.formGroup.value);
+    } else {
+      this.formGroup.markAllAsTouched();
+    }
+  }
 }
 
 export const FORM_CONFIG = [
@@ -88,7 +101,11 @@ Please make sure, you are using correct data format.
 
 ## Dependencies
 
-Please add `"bootstrap": "^5.3.3"` by run command `npm install bootstrap@5.3.3`. After install it, please add css on global style file >> `@import '~bootstrap/dist/css/bootstrap.min.css';`
+Please add `"bootstrap": "^5.3.3"` by run command `npm install bootstrap@5.3.3`. After install it, 
+
+please add css on global style file >> 
+
+`@import '~bootstrap/dist/css/bootstrap.min.css';`
 
 ## Further help
 
