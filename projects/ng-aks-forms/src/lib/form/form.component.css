@@ -1,0 +1,11 @@
+.error{
+    color: red;
+    font-size: 12px;
+    font-style: italic;
+}
+.form-label,.form-control,.form-select,.form-check {
+    font-size: 14px;
+}
+.form-label {
+    display: block;
+}
