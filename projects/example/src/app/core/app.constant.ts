@@ -1,8 +1,8 @@
-import { NgAksFormsConfigModel } from "projects/ng-aks-forms/src/lib/core/ng-aks-forms.model";
+import { ControlType, NgAksFormsConfigModel } from "projects/ng-aks-forms/src/lib/core/ng-aks-forms.model";
 
 export const FORM_CONFIG: NgAksFormsConfigModel[] = [
     {
-      type: 'text',
+      type: ControlType.Text,
       label: 'Name',
       name: 'name',
       value: '',
@@ -15,7 +15,7 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
       ],
     },
     {
-      type: 'textarea',
+      type: ControlType.Textarea,
       label: 'Description',
       name: 'description',
       value: '',
@@ -28,18 +28,19 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
       ],
     },
     {
-      type: 'number',
+      type: ControlType.Number,
       label: 'Age',
       name: 'age',
       value: '',
       validations: [],
     },
     {
-      type: 'select',
+      type: ControlType.Select,
       label: 'Country',
       name: 'country',
       value: 1,
       options: [
+        { label: 'Select', value: '' },
         { label: 'India', value: 1 },
         { label: 'USA', value: 2 },
         { label: 'Canada', value: 3 },
@@ -52,4 +53,37 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
         },
       ],
     },
+    {
+      type: ControlType.Radio,
+      label: 'Gender',
+      name: 'gender',
+      value: '',
+      options: [
+        { label: 'Male', value: 'male' },
+        { label: 'Female', value: 'female' },
+      ],
+      validations: [],
+      inlineCheckOptions: true,
+    },
+    {
+      type: ControlType.Checkbox,
+      label: 'Education',
+      name: 'edu',
+      value: '',
+      options: [
+        { label: 'UG', value: 'ug' },
+        { label: 'PG', value: 'pg' },
+      ],
+      validations: [],
+    },
+    {
+      type: ControlType.Switch,
+      label: 'Are you indian?',
+      name: 'indian',
+      value: '',
+      options: [
+        { label: 'Yes', value: 'yes' },
+      ],
+      validations: [],
+    }
   ];

@@ -1,7 +1,7 @@
 <form [formGroup]="dynamicFormGroup">
     <div *ngFor="let control of formConfig">
         <div [ngSwitch]="control.type">
-            <div class="mb-3" *ngSwitchCase="'select'">
+            <div *ngSwitchCase="'select'">
                 <label class="form-label">{{control.label}}</label>
                 <select class="form-select" [formControlName]="control.name">
                     <option *ngFor="let option of control.options" [value]="option.value">
@@ -9,18 +9,46 @@
                     </option>
                 </select>
             </div>
-            <div class="mb-3" *ngSwitchCase="'textarea'">
+            <div *ngSwitchCase="'textarea'">
                 <label class="form-label">{{control.label}}</label>
                 <textarea class="form-control" [formControlName]="control.name"></textarea>
             </div>
-            <div class="mb-3" *ngSwitchDefault>
+            <div *ngSwitchCase="'checkbox'">
+                <label class="form-label">{{control.label}}</label>
+                <div class="form-check" *ngFor="let option of control.options">
+                    <input class="form-check-input" type="checkbox" [value]="option.value" [formControlName]="control.name" [id]="option.value">
+                    <label class="form-check-label" [for]="option.value">
+                      {{option.label}}
+                    </label>
+                  </div>
+            </div>
+            <div *ngSwitchCase="'switch'">
+                <label class="form-label">{{control.label}}</label>
+                <div class="form-check form-switch" *ngFor="let option of control.options">
+                    <input class="form-check-input" type="checkbox" [value]="option.value" [formControlName]="control.name" [id]="option.value">
+                    <label class="form-check-label" [for]="option.value">
+                      {{option.label}}
+                    </label>
+                  </div>
+            </div>
+            <div *ngSwitchCase="'radio'">
+                <label class="form-label">{{control.label}}</label>
+                <div class="form-check" [ngClass]="{'form-check-inline': control.inlineCheckOptions}" *ngFor="let option of control.options">
+                    <input class="form-check-input" type="radio" [value]="option.value" [formControlName]="control.name" [id]="option.value">
+                    <label class="form-check-label" [for]="option.value">
+                      {{option.label}}
+                    </label>
+                  </div>
+            </div>
+            <div *ngSwitchDefault>
                 <label class="form-label">{{control.label}}</label>
                 <input class="form-control" [type]="control.type" [formControlName]="control.name">
             </div>
         </div>
-        <span
+        <span class="error"
             *ngIf="dynamicFormGroup.controls[control.name]?.invalid && dynamicFormGroup.controls[control.name]?.touched">
             {{getErrorMessage(control)}}
         </span>
+        <div class="w-100 mb-3"></div>
     </div>
 </form>

@@ -44,7 +44,7 @@ export class AppComponent {
 
 export const FORM_CONFIG = [
     {
-      type: 'text',
+      type: ControlType.Text,
       label: 'Name',
       name: 'name',
       value: '',
@@ -57,7 +57,7 @@ export const FORM_CONFIG = [
       ],
     },
     {
-      type: 'textarea',
+      type: ControlType.Textarea,
       label: 'Description',
       name: 'description',
       value: '',
@@ -70,18 +70,19 @@ export const FORM_CONFIG = [
       ],
     },
     {
-      type: 'number',
+      type: ControlType.Number,
       label: 'Age',
       name: 'age',
       value: '',
       validations: [],
     },
     {
-      type: 'select',
+      type: ControlType.Select,
       label: 'Country',
       name: 'country',
       value: 1,
       options: [
+        { label: 'Select', value: '' },
         { label: 'India', value: 1 },
         { label: 'USA', value: 2 },
         { label: 'Canada', value: 3 },
