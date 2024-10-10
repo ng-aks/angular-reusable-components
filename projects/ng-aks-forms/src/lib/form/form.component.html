@@ -16,33 +16,45 @@
             <div *ngSwitchCase="'checkbox'">
                 <label class="form-label">{{control.label}}</label>
                 <div class="form-check" *ngFor="let option of control.options">
-                    <input class="form-check-input" type="checkbox" [value]="option.value" [formControlName]="control.name" [id]="option.value">
+                    <input class="form-check-input" type="checkbox" [value]="option.value"
+                        [formControlName]="control.name" [id]="option.value">
                     <label class="form-check-label" [for]="option.value">
-                      {{option.label}}
+                        {{option.label}}
                     </label>
-                  </div>
+                </div>
             </div>
             <div *ngSwitchCase="'switch'">
                 <label class="form-label">{{control.label}}</label>
                 <div class="form-check form-switch" *ngFor="let option of control.options">
-                    <input class="form-check-input" type="checkbox" [value]="option.value" [formControlName]="control.name" [id]="option.value">
+                    <input class="form-check-input" type="checkbox" [value]="option.value"
+                        [formControlName]="control.name" [id]="option.value">
                     <label class="form-check-label" [for]="option.value">
-                      {{option.label}}
+                        {{option.label}}
                     </label>
-                  </div>
+                </div>
             </div>
             <div *ngSwitchCase="'radio'">
                 <label class="form-label">{{control.label}}</label>
-                <div class="form-check" [ngClass]="{'form-check-inline': control.inlineCheckOptions}" *ngFor="let option of control.options">
-                    <input class="form-check-input" type="radio" [value]="option.value" [formControlName]="control.name" [id]="option.value">
+                <div class="form-check" [ngClass]="{'form-check-inline': control.inlineCheckOptions}"
+                    *ngFor="let option of control.options">
+                    <input class="form-check-input" type="radio" [value]="option.value" [formControlName]="control.name"
+                        [id]="option.value">
                     <label class="form-check-label" [for]="option.value">
-                      {{option.label}}
+                        {{option.label}}
                     </label>
-                  </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'datalist'">
+                <label class="form-label">{{control.label}}</label>
+                <input class="form-control" [formControlName]="control.name" list="datalistOptions" [placeholder]="control?.placeholder">
+                <datalist id="datalistOptions">
+                    <option *ngFor="let option of control.options" [value]="option.value">
+                </datalist>
             </div>
             <div *ngSwitchDefault>
                 <label class="form-label">{{control.label}}</label>
-                <input class="form-control" [type]="control.type" [formControlName]="control.name">
+                <input class="form-control" [ngClass]="{'form-control-color': control.type == 'color'}"
+                    [type]="control.type" [formControlName]="control.name" [placeholder]="control?.placeholder">
             </div>
         </div>
         <span class="error"

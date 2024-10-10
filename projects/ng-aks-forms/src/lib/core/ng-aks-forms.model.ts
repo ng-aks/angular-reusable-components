@@ -5,7 +5,8 @@ export interface NgAksFormsConfigModel {
     value?: string | number | boolean,
     options?: Options[];
     validations?: Validations[],
-    inlineCheckOptions?: boolean
+    inlineCheckOptions?: boolean,
+    placeholder?: string
 }
 
 export interface Options {
@@ -33,4 +34,5 @@ export enum ControlType {
     Color = 'color',
     File = 'file',
     Switch = 'switch',
+    Datalist = 'datalist'
 }
