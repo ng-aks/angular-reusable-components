@@ -1,8 +1,8 @@
 {
   "name": "@ng-aks/forms",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "author": "Ankit Kumar Sharma",
-  "keywords": ["angular","dynamic forms","reusable forms","npm","json forms","json","json dynamic forms","reactive forms"],
+  "keywords": ["angular","dynamic forms","dynamic form","reusable forms","reusable form","form","forms","npm","json forms","json","json dynamic forms","reactive forms"],
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0",

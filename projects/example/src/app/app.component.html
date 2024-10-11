@@ -1,4 +1,10 @@
-Dynamic Forms
-<ng-aks-forms [formConfig]="formConfig" (onSubmitForm)="onSubmitForm($event)">
-    <button (click)="onGetForm()" class="btn btn-primary" type="submit">Submit</button>
-</ng-aks-forms>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            Dynamic Forms
+            <ng-aks-forms [formConfig]="formConfig" (onSubmitForm)="onSubmitForm($event)">
+                <button (click)="onGetForm()" class="btn btn-primary" type="submit">Submit</button>
+            </ng-aks-forms>
+        </div>
+    </div>
+</div>

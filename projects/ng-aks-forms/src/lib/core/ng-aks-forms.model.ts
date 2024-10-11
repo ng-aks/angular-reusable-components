@@ -6,7 +6,10 @@ export interface NgAksFormsConfigModel {
     options?: Options[];
     validations?: Validations[],
     inlineCheckOptions?: boolean,
-    placeholder?: string
+    placeholder?: string,
+    disabled?: boolean,
+    readonly?: boolean,
+    layout?: Layout
 }
 
 export interface Options {
@@ -18,6 +21,11 @@ export interface Validations {
     name: string,
     validator: string,
     message: string
+}
+
+export enum Layout {
+    Horizontal = 'horizontal',
+    Vertical ='vertical'
 }
 
 export enum ControlType {

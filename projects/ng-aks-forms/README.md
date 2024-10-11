@@ -47,7 +47,9 @@ export const FORM_CONFIG = [
       type: ControlType.Text,
       label: 'Name',
       name: 'name',
-      value: '',
+      value: 'Ankit Kumar Sharma',
+      layout: Layout.Horizontal,
+      disabled: true,
       validations: [
         {
           name: 'required',
@@ -57,10 +59,20 @@ export const FORM_CONFIG = [
       ],
     },
     {
+      type: ControlType.Text,
+      label: 'City',
+      name: 'city',
+      value: 'Gurgaon',
+      layout: Layout.Horizontal,
+      readonly: true,
+      validations: [],
+    },
+    {
       type: ControlType.Textarea,
       label: 'Description',
       name: 'description',
       value: '',
+      layout: Layout.Horizontal,
       validations: [
         {
           name: 'required',
@@ -74,6 +86,7 @@ export const FORM_CONFIG = [
       label: 'Age',
       name: 'age',
       value: '',
+      layout: Layout.Horizontal,
       validations: [],
     },
     {
@@ -81,6 +94,7 @@ export const FORM_CONFIG = [
       label: 'Country',
       name: 'country',
       value: 1,
+      layout: Layout.Horizontal,
       options: [
         { label: 'Select', value: '' },
         { label: 'India', value: 1 },

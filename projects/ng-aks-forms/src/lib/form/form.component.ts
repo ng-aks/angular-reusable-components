@@ -43,11 +43,20 @@ export class FormComponent implements OnInit, AfterViewInit {
           }
         });
       }
-      formGroup[control.name] = [control.value || '', controlValidators]
+      formGroup[control.name] = [control.value || '', controlValidators];
     });
     this.dynamicFormGroup = this.formBuilder.group(formGroup);
+    this.addOtherFeatureInForm();
   }
-
+  addOtherFeatureInForm() {
+    this.formConfig.map(control => {
+      if (control.disabled) {
+        this.dynamicFormGroup.get(control.name)?.disable();
+      } else {
+        this.dynamicFormGroup.get(control.name)?.enable();
+      }
+    })
+  }
   getErrorMessage(control: any) {
     const formControl = this.dynamicFormGroup.get(control.name);
     if (!formControl) {
@@ -59,5 +68,33 @@ export class FormComponent implements OnInit, AfterViewInit {
       }
     }
     return '';
+  }
+
+  getLayoutClassForControlGroup(control: NgAksFormsConfigModel) {
+    return { 'row': control.layout == 'horizontal', 'col-12': control.layout == 'vertical' }
+  }
+
+  getLayoutClassForHorizontalLabel(control: NgAksFormsConfigModel) {
+    return { 'col-4 col-form-label': control.layout == 'horizontal' }
+  }
+
+  getLayoutClassForHorizontalControl(control: NgAksFormsConfigModel) {
+    return { 'col-8': control.layout == 'horizontal' }
+  }
+
+  getLayoutClassForVerticalBlock(control: NgAksFormsConfigModel) {
+    return { 'col-12': control.layout == 'vertical' }
+  }
+
+  getInputControlClass(control: NgAksFormsConfigModel) {
+    return { 'form-control-color': control.type == 'color', 'form-control-plaintext': control.readonly }
+  }
+
+  getErrorClass(control: NgAksFormsConfigModel) {
+    return { 'col-8 offset-4': control.layout == 'horizontal', 'col-12': control.layout == 'vertical' }
+  }
+
+  isError(control: NgAksFormsConfigModel) {
+    return this.dynamicFormGroup.controls[control.name]?.invalid && this.dynamicFormGroup.controls[control.name]?.touched
   }
 }
