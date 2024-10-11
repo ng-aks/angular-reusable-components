@@ -1,7 +1,14 @@
 # Angular Dynamic Forms
 
+A JSON based Form builder library for Angular framework.
 This library will elp you to create dynamic forms wit elp of simple json format.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+
+## Versions Info
+
+| Angular  | Bootstrap  | ng-aks-forms |
+| :------------ |:------------|:------------|
+| 16.x.x     | 5.x.x | 1.x.x |
 
 ## How to use reusable dynamic forms in our project
 
@@ -114,9 +121,61 @@ export const FORM_CONFIG = [
 the above data, you can use your api data or constant data as per your requirement.
 Please make sure, you are using correct data format.
 
+## Models Supports
+
+```ts
+export interface NgAksFormsConfigModel {
+    type: ControlType,
+    label: string,
+    name: string,
+    value?: string | number | boolean,
+    options?: Options[];
+    validations?: Validations[],
+    inlineCheckOptions?: boolean,
+    placeholder?: string,
+    disabled?: boolean,
+    readonly?: boolean,
+    layout?: Layout
+}
+
+export interface Options {
+    label: string,
+    value: number | string | boolean
+}
+
+export interface Validations {
+    name: string,
+    validator: string,
+    message: string
+}
+
+export enum Layout {
+    Horizontal = 'horizontal',
+    Vertical ='vertical'
+}
+
+export enum ControlType {
+    Text = 'text',
+    Password = 'password',
+    Select = 'select',
+    Radio = 'radio',
+    Checkbox = 'checkbox',
+    Textarea = 'textarea',
+    Number = 'number',
+    Email = 'email',
+    Date = 'date',
+    Time = 'time',
+    Color = 'color',
+    File = 'file',
+    Switch = 'switch',
+    Datalist = 'datalist'
+}
+
+```
+
 ## Dependencies
 
-Please add `"bootstrap": "^5.3.3"` by run command `npm install bootstrap@5.3.3`. After install it, 
+Please add `"bootstrap": "^5.x.x"` by run command `npm install bootstrap@5`. After install it, 
 
 please add css on global style file >> 
 

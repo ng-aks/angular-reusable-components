@@ -1,8 +1,15 @@
 {
   "name": "@ng-aks/forms",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Ankit Kumar Sharma",
   "keywords": ["angular","dynamic forms","dynamic form","reusable forms","reusable form","form","forms","npm","json forms","json","json dynamic forms","reactive forms"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ng-aks/angular-dynamic-forms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ng-aks/angular-dynamic-forms/issues"
+  },
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0",
