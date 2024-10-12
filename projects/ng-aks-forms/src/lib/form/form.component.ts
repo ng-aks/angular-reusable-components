@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { NgAksFormsConfigModel } from '../core/ng-aks-forms.model';
+import { Config, NgAksFormsConfigModel } from '../core/ng-aks-forms.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit, AfterViewInit {
-  @Input() formConfig: NgAksFormsConfigModel[] = [];
+  @Input() formConfig!: NgAksFormsConfigModel;
   @Output() onSubmitForm: EventEmitter<any> = new EventEmitter<any>();
   dynamicFormGroup!: FormGroup;
 
@@ -24,7 +24,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   initDynamicForm() {
     this.dynamicFormGroup = this.formBuilder.group({});
     let formGroup: Record<string, any> = {};
-    this.formConfig.map(control => {
+    this.formConfig.config.map(control => {
       let controlValidators: Validators[] = [];
       if (control.validations) {
         control.validations.forEach(validation => {
@@ -43,11 +43,20 @@ export class FormComponent implements OnInit, AfterViewInit {
           }
         });
       }
-      formGroup[control.name] = [control.value || '', controlValidators]
+      formGroup[control.name] = [control.value || '', controlValidators];
     });
     this.dynamicFormGroup = this.formBuilder.group(formGroup);
+    this.addOtherFeatureInForm();
   }
-
+  addOtherFeatureInForm() {
+    this.formConfig.config.map(control => {
+      if (control.disabled) {
+        this.dynamicFormGroup.get(control.name)?.disable();
+      } else {
+        this.dynamicFormGroup.get(control.name)?.enable();
+      }
+    })
+  }
   getErrorMessage(control: any) {
     const formControl = this.dynamicFormGroup.get(control.name);
     if (!formControl) {
@@ -59,5 +68,33 @@ export class FormComponent implements OnInit, AfterViewInit {
       }
     }
     return '';
+  }
+
+  getLayoutClassForControlGroup(control: Config) {
+    return { 'row': this.formConfig.layout == 'horizontal', 'col-12': this.formConfig.layout == 'vertical' }
+  }
+
+  getLayoutClassForHorizontalLabel() {
+    return { 'col-4 col-form-label': this.formConfig.layout == 'horizontal' }
+  }
+
+  getLayoutClassForHorizontalControl() {
+    return { 'col-8': this.formConfig.layout == 'horizontal' }
+  }
+
+  getLayoutClassForVerticalBlock() {
+    return { 'col-12': this.formConfig.layout == 'vertical' }
+  }
+
+  getInputControlClass(control: Config) {
+    return { 'form-control-color': control.type == 'color', 'form-control-plaintext': control.readonly }
+  }
+
+  getErrorClass() {
+    return { 'col-8 offset-4': this.formConfig.layout == 'horizontal', 'col-12': this.formConfig.layout == 'vertical' }
+  }
+
+  isError(control: Config) {
+    return this.dynamicFormGroup.controls[control.name]?.invalid && this.dynamicFormGroup.controls[control.name]?.touched
   }
 }

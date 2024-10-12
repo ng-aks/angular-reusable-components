@@ -1,66 +1,84 @@
 <form [formGroup]="dynamicFormGroup">
-    <div *ngFor="let control of formConfig">
-        <div [ngSwitch]="control.type">
-            <div *ngSwitchCase="'select'">
-                <label class="form-label">{{control.label}}</label>
-                <select class="form-select" [formControlName]="control.name">
-                    <option *ngFor="let option of control.options" [value]="option.value">
-                        {{option.label}}
-                    </option>
-                </select>
-            </div>
-            <div *ngSwitchCase="'textarea'">
-                <label class="form-label">{{control.label}}</label>
-                <textarea class="form-control" [formControlName]="control.name"></textarea>
-            </div>
-            <div *ngSwitchCase="'checkbox'">
-                <label class="form-label">{{control.label}}</label>
-                <div class="form-check" *ngFor="let option of control.options">
-                    <input class="form-check-input" type="checkbox" [value]="option.value"
-                        [formControlName]="control.name" [id]="option.value">
-                    <label class="form-check-label" [for]="option.value">
-                        {{option.label}}
-                    </label>
+    <div *ngFor="let control of formConfig.config">
+        <div [ngClass]="getLayoutClassForVerticalBlock()" [ngSwitch]="control.type">
+            <div *ngSwitchCase="'select'" [ngClass]="getLayoutClassForControlGroup(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
+                    <select class="form-select" [formControlName]="control.name">
+                        <option *ngFor="let option of control.options" [value]="option.value">
+                            {{option.label}}
+                        </option>
+                    </select>
                 </div>
             </div>
-            <div *ngSwitchCase="'switch'">
-                <label class="form-label">{{control.label}}</label>
-                <div class="form-check form-switch" *ngFor="let option of control.options">
-                    <input class="form-check-input" type="checkbox" [value]="option.value"
-                        [formControlName]="control.name" [id]="option.value">
-                    <label class="form-check-label" [for]="option.value">
-                        {{option.label}}
-                    </label>
+            <div *ngSwitchCase="'textarea'" [ngClass]="getLayoutClassForControlGroup(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
+                    <textarea class="form-control" [formControlName]="control.name"></textarea>
                 </div>
             </div>
-            <div *ngSwitchCase="'radio'">
-                <label class="form-label">{{control.label}}</label>
-                <div class="form-check" [ngClass]="{'form-check-inline': control.inlineCheckOptions}"
-                    *ngFor="let option of control.options">
-                    <input class="form-check-input" type="radio" [value]="option.value" [formControlName]="control.name"
-                        [id]="option.value">
-                    <label class="form-check-label" [for]="option.value">
-                        {{option.label}}
-                    </label>
+            <div *ngSwitchCase="'checkbox'" [ngClass]="getLayoutClassForControlGroup(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
+                    <div class="form-check" *ngFor="let option of control.options">
+                        <input class="form-check-input" type="checkbox" [value]="option.value"
+                            [formControlName]="control.name" [id]="option.value">
+                        <label class="form-check-label" [for]="option.value">
+                            {{option.label}}
+                        </label>
+                    </div>
                 </div>
             </div>
-            <div *ngSwitchCase="'datalist'">
-                <label class="form-label">{{control.label}}</label>
-                <input class="form-control" [formControlName]="control.name" list="datalistOptions" [placeholder]="control?.placeholder">
-                <datalist id="datalistOptions">
-                    <option *ngFor="let option of control.options" [value]="option.value">
-                </datalist>
+            <div *ngSwitchCase="'switch'" [ngClass]="getLayoutClassForControlGroup(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
+                    <div class="form-check form-switch" *ngFor="let option of control.options">
+                        <input class="form-check-input" type="checkbox" [value]="option.value"
+                            [formControlName]="control.name" [id]="option.value">
+                        <label class="form-check-label" [for]="option.value">
+                            {{option.label}}
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div *ngSwitchDefault>
-                <label class="form-label">{{control.label}}</label>
-                <input class="form-control" [ngClass]="{'form-control-color': control.type == 'color'}"
-                    [type]="control.type" [formControlName]="control.name" [placeholder]="control?.placeholder">
+            <div *ngSwitchCase="'radio'" [ngClass]="getLayoutClassForControlGroup(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
+                    <div class="form-check" [ngClass]="{'form-check-inline': control.inlineCheckOptions}"
+                        *ngFor="let option of control.options">
+                        <input class="form-check-input" type="radio" [value]="option.value"
+                            [formControlName]="control.name" [id]="option.value">
+                        <label class="form-check-label" [for]="option.value">
+                            {{option.label}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'datalist'" [ngClass]="getLayoutClassForControlGroup(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
+                    <input class="form-control" [formControlName]="control.name" list="datalistOptions"
+                        [placeholder]="control?.placeholder ? control.placeholder:''">
+                    <datalist id="datalistOptions">
+                        <option *ngFor="let option of control.options" [value]="option.value">
+                    </datalist>
+                </div>
+            </div>
+            <div *ngSwitchDefault [ngClass]="getLayoutClassForControlGroup(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
+                    <input class="form-control" [ngClass]="getInputControlClass(control)" [type]="control.type"
+                        [formControlName]="control.name" [placeholder]="control?.placeholder ? control.placeholder:''">
+                </div>
             </div>
         </div>
-        <span class="error"
-            *ngIf="dynamicFormGroup.controls[control.name]?.invalid && dynamicFormGroup.controls[control.name]?.touched">
-            {{getErrorMessage(control)}}
-        </span>
+        <div class="row">
+            <div [ngClass]="getErrorClass()">
+                <span class="error" *ngIf="isError(control)">
+                    {{getErrorMessage(control)}}
+                </span>
+            </div>
+        </div>
         <div class="w-100 mb-3"></div>
     </div>
 </form>

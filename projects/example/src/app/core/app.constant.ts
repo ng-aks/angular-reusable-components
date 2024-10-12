@@ -1,11 +1,13 @@
-import { ControlType, NgAksFormsConfigModel } from "projects/ng-aks-forms/src/lib/core/ng-aks-forms.model";
+import { ControlType, Layout, NgAksFormsConfigModel } from "projects/ng-aks-forms/src/lib/core/ng-aks-forms.model";
 
-export const FORM_CONFIG: NgAksFormsConfigModel[] = [
+export const FORM_CONFIG: NgAksFormsConfigModel = {
+  config: [
     {
       type: ControlType.Text,
       label: 'Name',
       name: 'name',
-      value: '',
+      value: 'Ankit Kumar Sharma',
+      disabled: true,
       validations: [
         {
           name: 'required',
@@ -13,6 +15,14 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
           message: 'Name is required',
         },
       ],
+    },
+    {
+      type: ControlType.Text,
+      label: 'City',
+      name: 'city',
+      value: 'Gurgaon',
+      readonly: true,
+      validations: [],
     },
     {
       type: ControlType.Textarea,
@@ -86,4 +96,6 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
       ],
       validations: [],
     }
-  ];
+  ],
+  layout: Layout.Vertical,
+}
