@@ -1,16 +1,15 @@
 # Angular Dynamic Forms
 
 A JSON based Form builder library for Angular framework.
-This library will elp you to create dynamic forms wit elp of simple json format.
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+This library will help you to create dynamic forms with help of simple json format.
 
 ## Versions Info
 
 | Angular  | Bootstrap  | ng-aks-forms |
 | :------------ |:------------|:------------|
-| 16.x.x     | 5.x.x | 1.x.x |
+| 16.x.x, 17.x.x, 18.x.x    | 5.x.x | 1.x.x |
 
-## How to use reusable dynamic forms in our project
+## Setup - How to use reusable dynamic forms in our project
 
 Run `npm i @ng-aks/forms` to install this library in your project. After install add module in app.module file.
 
@@ -49,13 +48,13 @@ export class AppComponent {
   }
 }
 
-export const FORM_CONFIG = [
+export const FORM_CONFIG: NgAksFormsConfigModel = {
+  config: [
     {
       type: ControlType.Text,
       label: 'Name',
       name: 'name',
       value: 'Ankit Kumar Sharma',
-      layout: Layout.Horizontal,
       disabled: true,
       validations: [
         {
@@ -70,7 +69,6 @@ export const FORM_CONFIG = [
       label: 'City',
       name: 'city',
       value: 'Gurgaon',
-      layout: Layout.Horizontal,
       readonly: true,
       validations: [],
     },
@@ -79,7 +77,6 @@ export const FORM_CONFIG = [
       label: 'Description',
       name: 'description',
       value: '',
-      layout: Layout.Horizontal,
       validations: [
         {
           name: 'required',
@@ -93,7 +90,6 @@ export const FORM_CONFIG = [
       label: 'Age',
       name: 'age',
       value: '',
-      layout: Layout.Horizontal,
       validations: [],
     },
     {
@@ -101,7 +97,6 @@ export const FORM_CONFIG = [
       label: 'Country',
       name: 'country',
       value: 1,
-      layout: Layout.Horizontal,
       options: [
         { label: 'Select', value: '' },
         { label: 'India', value: 1 },
@@ -115,16 +110,23 @@ export const FORM_CONFIG = [
           message: 'Address is required',
         },
       ],
-    },
-  ];
+    }
+  ],
+  layout: Layout.Vertical,
+}
 ```
 the above data, you can use your api data or constant data as per your requirement.
 Please make sure, you are using correct data format.
 
-## Models Supports
+## Models Supports for properties, we are using.
 
 ```ts
 export interface NgAksFormsConfigModel {
+    config: Config[],
+    layout: Layout,
+}
+
+export interface Config {
     type: ControlType,
     label: string,
     name: string,
@@ -135,7 +137,6 @@ export interface NgAksFormsConfigModel {
     placeholder?: string,
     disabled?: boolean,
     readonly?: boolean,
-    layout?: Layout
 }
 
 export interface Options {
@@ -177,12 +178,14 @@ export enum ControlType {
 
 Please add `"bootstrap": "^5.x.x"` by run command `npm install bootstrap@5`. After install it, 
 
-please add css on global style file >> 
+please add css on global style file or you can import it from `node_modules` also directly, if it is not working. 
 
 `@import '~bootstrap/dist/css/bootstrap.min.css';`
 
 ## Further help
 
 To get more help on the this , please contact to [Ankit Kumar Sharma](https://www.ankitkumarsharma.com/)
+
+If you get any issue, error or query, you can raise it on [GitHub Issues](https://github.com/ng-aks/angular-dynamic-forms/issues) also.
 
 Thanks

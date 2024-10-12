@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { NgAksFormsConfigModel } from '../core/ng-aks-forms.model';
+import { Config, NgAksFormsConfigModel } from '../core/ng-aks-forms.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit, AfterViewInit {
-  @Input() formConfig: NgAksFormsConfigModel[] = [];
+  @Input() formConfig!: NgAksFormsConfigModel;
   @Output() onSubmitForm: EventEmitter<any> = new EventEmitter<any>();
   dynamicFormGroup!: FormGroup;
 
@@ -24,7 +24,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   initDynamicForm() {
     this.dynamicFormGroup = this.formBuilder.group({});
     let formGroup: Record<string, any> = {};
-    this.formConfig.map(control => {
+    this.formConfig.config.map(control => {
       let controlValidators: Validators[] = [];
       if (control.validations) {
         control.validations.forEach(validation => {
@@ -49,7 +49,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     this.addOtherFeatureInForm();
   }
   addOtherFeatureInForm() {
-    this.formConfig.map(control => {
+    this.formConfig.config.map(control => {
       if (control.disabled) {
         this.dynamicFormGroup.get(control.name)?.disable();
       } else {
@@ -70,31 +70,31 @@ export class FormComponent implements OnInit, AfterViewInit {
     return '';
   }
 
-  getLayoutClassForControlGroup(control: NgAksFormsConfigModel) {
-    return { 'row': control.layout == 'horizontal', 'col-12': control.layout == 'vertical' }
+  getLayoutClassForControlGroup(control: Config) {
+    return { 'row': this.formConfig.layout == 'horizontal', 'col-12': this.formConfig.layout == 'vertical' }
   }
 
-  getLayoutClassForHorizontalLabel(control: NgAksFormsConfigModel) {
-    return { 'col-4 col-form-label': control.layout == 'horizontal' }
+  getLayoutClassForHorizontalLabel() {
+    return { 'col-4 col-form-label': this.formConfig.layout == 'horizontal' }
   }
 
-  getLayoutClassForHorizontalControl(control: NgAksFormsConfigModel) {
-    return { 'col-8': control.layout == 'horizontal' }
+  getLayoutClassForHorizontalControl() {
+    return { 'col-8': this.formConfig.layout == 'horizontal' }
   }
 
-  getLayoutClassForVerticalBlock(control: NgAksFormsConfigModel) {
-    return { 'col-12': control.layout == 'vertical' }
+  getLayoutClassForVerticalBlock() {
+    return { 'col-12': this.formConfig.layout == 'vertical' }
   }
 
-  getInputControlClass(control: NgAksFormsConfigModel) {
+  getInputControlClass(control: Config) {
     return { 'form-control-color': control.type == 'color', 'form-control-plaintext': control.readonly }
   }
 
-  getErrorClass(control: NgAksFormsConfigModel) {
-    return { 'col-8 offset-4': control.layout == 'horizontal', 'col-12': control.layout == 'vertical' }
+  getErrorClass() {
+    return { 'col-8 offset-4': this.formConfig.layout == 'horizontal', 'col-12': this.formConfig.layout == 'vertical' }
   }
 
-  isError(control: NgAksFormsConfigModel) {
+  isError(control: Config) {
     return this.dynamicFormGroup.controls[control.name]?.invalid && this.dynamicFormGroup.controls[control.name]?.touched
   }
 }

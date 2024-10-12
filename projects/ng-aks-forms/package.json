@@ -1,6 +1,6 @@
 {
   "name": "@ng-aks/forms",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Ankit Kumar Sharma",
   "keywords": ["angular","dynamic forms","dynamic form","reusable forms","reusable form","form","forms","npm","json forms","json","json dynamic forms","reactive forms"],
   "repository": {

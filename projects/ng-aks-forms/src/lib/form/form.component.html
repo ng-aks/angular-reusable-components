@@ -1,10 +1,9 @@
 <form [formGroup]="dynamicFormGroup">
-    <div *ngFor="let control of formConfig">
-        <div [ngClass]="getLayoutClassForVerticalBlock(control)" [ngSwitch]="control.type">
+    <div *ngFor="let control of formConfig.config">
+        <div [ngClass]="getLayoutClassForVerticalBlock()" [ngSwitch]="control.type">
             <div *ngSwitchCase="'select'" [ngClass]="getLayoutClassForControlGroup(control)">
-                <label class="form-label"
-                    [ngClass]="getLayoutClassForHorizontalLabel(control)">{{control.label}}</label>
-                <div [ngClass]="getLayoutClassForHorizontalControl(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
                     <select class="form-select" [formControlName]="control.name">
                         <option *ngFor="let option of control.options" [value]="option.value">
                             {{option.label}}
@@ -13,16 +12,14 @@
                 </div>
             </div>
             <div *ngSwitchCase="'textarea'" [ngClass]="getLayoutClassForControlGroup(control)">
-                <label class="form-label"
-                    [ngClass]="getLayoutClassForHorizontalLabel(control)">{{control.label}}</label>
-                <div [ngClass]="getLayoutClassForHorizontalControl(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
                     <textarea class="form-control" [formControlName]="control.name"></textarea>
                 </div>
             </div>
             <div *ngSwitchCase="'checkbox'" [ngClass]="getLayoutClassForControlGroup(control)">
-                <label class="form-label"
-                    [ngClass]="getLayoutClassForHorizontalLabel(control)">{{control.label}}</label>
-                <div [ngClass]="getLayoutClassForHorizontalControl(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
                     <div class="form-check" *ngFor="let option of control.options">
                         <input class="form-check-input" type="checkbox" [value]="option.value"
                             [formControlName]="control.name" [id]="option.value">
@@ -33,9 +30,8 @@
                 </div>
             </div>
             <div *ngSwitchCase="'switch'" [ngClass]="getLayoutClassForControlGroup(control)">
-                <label class="form-label"
-                    [ngClass]="getLayoutClassForHorizontalLabel(control)">{{control.label}}</label>
-                <div [ngClass]="getLayoutClassForHorizontalControl(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
                     <div class="form-check form-switch" *ngFor="let option of control.options">
                         <input class="form-check-input" type="checkbox" [value]="option.value"
                             [formControlName]="control.name" [id]="option.value">
@@ -46,9 +42,8 @@
                 </div>
             </div>
             <div *ngSwitchCase="'radio'" [ngClass]="getLayoutClassForControlGroup(control)">
-                <label class="form-label"
-                    [ngClass]="getLayoutClassForHorizontalLabel(control)">{{control.label}}</label>
-                <div [ngClass]="getLayoutClassForHorizontalControl(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
                     <div class="form-check" [ngClass]="{'form-check-inline': control.inlineCheckOptions}"
                         *ngFor="let option of control.options">
                         <input class="form-check-input" type="radio" [value]="option.value"
@@ -60,9 +55,8 @@
                 </div>
             </div>
             <div *ngSwitchCase="'datalist'" [ngClass]="getLayoutClassForControlGroup(control)">
-                <label class="form-label"
-                    [ngClass]="getLayoutClassForHorizontalLabel(control)">{{control.label}}</label>
-                <div [ngClass]="getLayoutClassForHorizontalControl(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
                     <input class="form-control" [formControlName]="control.name" list="datalistOptions"
                         [placeholder]="control?.placeholder ? control.placeholder:''">
                     <datalist id="datalistOptions">
@@ -71,16 +65,15 @@
                 </div>
             </div>
             <div *ngSwitchDefault [ngClass]="getLayoutClassForControlGroup(control)">
-                <label class="form-label"
-                    [ngClass]="getLayoutClassForHorizontalLabel(control)">{{control.label}}</label>
-                <div [ngClass]="getLayoutClassForHorizontalControl(control)">
+                <label class="form-label" [ngClass]="getLayoutClassForHorizontalLabel()">{{control.label}}</label>
+                <div [ngClass]="getLayoutClassForHorizontalControl()">
                     <input class="form-control" [ngClass]="getInputControlClass(control)" [type]="control.type"
                         [formControlName]="control.name" [placeholder]="control?.placeholder ? control.placeholder:''">
                 </div>
             </div>
         </div>
         <div class="row">
-            <div [ngClass]="getErrorClass(control)">
+            <div [ngClass]="getErrorClass()">
                 <span class="error" *ngIf="isError(control)">
                     {{getErrorMessage(control)}}
                 </span>

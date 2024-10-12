@@ -1,12 +1,12 @@
 import { ControlType, Layout, NgAksFormsConfigModel } from "projects/ng-aks-forms/src/lib/core/ng-aks-forms.model";
 
-export const FORM_CONFIG: NgAksFormsConfigModel[] = [
+export const FORM_CONFIG: NgAksFormsConfigModel = {
+  config: [
     {
       type: ControlType.Text,
       label: 'Name',
       name: 'name',
       value: 'Ankit Kumar Sharma',
-      layout: Layout.Horizontal,
       disabled: true,
       validations: [
         {
@@ -21,7 +21,6 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
       label: 'City',
       name: 'city',
       value: 'Gurgaon',
-      layout: Layout.Horizontal,
       readonly: true,
       validations: [],
     },
@@ -30,7 +29,6 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
       label: 'Description',
       name: 'description',
       value: '',
-      layout: Layout.Horizontal,
       validations: [
         {
           name: 'required',
@@ -44,7 +42,6 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
       label: 'Age',
       name: 'age',
       value: '',
-      layout: Layout.Horizontal,
       validations: [],
     },
     {
@@ -52,7 +49,6 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
       label: 'Country',
       name: 'country',
       value: 1,
-      layout: Layout.Horizontal,
       options: [
         { label: 'Select', value: '' },
         { label: 'India', value: 1 },
@@ -72,7 +68,6 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
       label: 'Gender',
       name: 'gender',
       value: '',
-      layout: Layout.Horizontal,
       options: [
         { label: 'Male', value: 'male' },
         { label: 'Female', value: 'female' },
@@ -85,7 +80,6 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
       label: 'Education',
       name: 'edu',
       value: '',
-      layout: Layout.Horizontal,
       options: [
         { label: 'UG', value: 'ug' },
         { label: 'PG', value: 'pg' },
@@ -97,10 +91,11 @@ export const FORM_CONFIG: NgAksFormsConfigModel[] = [
       label: 'Are you indian?',
       name: 'indian',
       value: '',
-      layout: Layout.Horizontal,
       options: [
         { label: 'Yes', value: 'yes' },
       ],
       validations: [],
     }
-  ];
+  ],
+  layout: Layout.Vertical,
+}

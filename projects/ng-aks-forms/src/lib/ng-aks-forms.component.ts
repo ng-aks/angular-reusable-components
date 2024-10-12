@@ -7,7 +7,7 @@ import { NgAksFormsConfigModel } from './core/ng-aks-forms.model';
   styleUrls: ['./ng-aks-forms.component.scss']
 })
 export class NgAksFormsComponent {
-  @Input() formConfig: NgAksFormsConfigModel[] = [];
+  @Input() formConfig!: NgAksFormsConfigModel;
   @Output() onSubmitForm:EventEmitter<any> = new EventEmitter<any>();
   @Input() isSubmit:boolean = false;
 

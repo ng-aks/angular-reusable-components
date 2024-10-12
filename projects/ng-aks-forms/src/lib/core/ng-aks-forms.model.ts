@@ -1,4 +1,9 @@
 export interface NgAksFormsConfigModel {
+    config: Config[],
+    layout: Layout,
+}
+
+export interface Config {
     type: ControlType,
     label: string,
     name: string,
@@ -9,7 +14,6 @@ export interface NgAksFormsConfigModel {
     placeholder?: string,
     disabled?: boolean,
     readonly?: boolean,
-    layout?: Layout
 }
 
 export interface Options {
