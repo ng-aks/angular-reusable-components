@@ -16,6 +16,7 @@ export class AppComponent {
     this.formGroup = e;
   }
   onGetForm() {
+    console.log("this.formGroup>> ",this.formGroup)
     if (this.formGroup.valid) {
       console.log("form value", this.formGroup.value);
     } else {

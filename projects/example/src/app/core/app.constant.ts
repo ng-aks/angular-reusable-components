@@ -1,4 +1,4 @@
-import { ControlType, Layout, NgAksFormsConfigModel } from "projects/ng-aks-forms/src/lib/core/ng-aks-forms.model";
+import { ControlType, Layout, NgAksFormsConfigModel, ValidationName } from "projects/ng-aks-forms/src/lib/core/ng-aks-forms.model";
 
 export const FORM_CONFIG: NgAksFormsConfigModel = {
   config: [
@@ -10,9 +10,37 @@ export const FORM_CONFIG: NgAksFormsConfigModel = {
       disabled: true,
       validations: [
         {
-          name: 'required',
-          validator: 'required',
+          name: ValidationName.Required,
           message: 'Name is required',
+        },
+      ],
+    },
+    {
+      type: ControlType.Text,
+      label: 'Address',
+      name: 'address',
+      value: '',
+      validations: [
+        {
+          name: ValidationName.MaxLength,
+          message: 'Address Max Length is 10',
+          maxLength: 10
+        },
+      ],
+    },
+    {
+      type: ControlType.Email,
+      label: 'Email',
+      name: 'email',
+      value: '',
+      validations: [
+        {
+          name: ValidationName.Required,
+          message: 'Email is required',
+        },
+        {
+          name: ValidationName.Email,
+          message: 'Invalid email address',
         },
       ],
     },
@@ -22,26 +50,6 @@ export const FORM_CONFIG: NgAksFormsConfigModel = {
       name: 'city',
       value: 'Gurgaon',
       readonly: true,
-      validations: [],
-    },
-    {
-      type: ControlType.Textarea,
-      label: 'Description',
-      name: 'description',
-      value: '',
-      validations: [
-        {
-          name: 'required',
-          validator: 'required',
-          message: 'Description is required',
-        },
-      ],
-    },
-    {
-      type: ControlType.Number,
-      label: 'Age',
-      name: 'age',
-      value: '',
       validations: [],
     },
     {
@@ -57,8 +65,7 @@ export const FORM_CONFIG: NgAksFormsConfigModel = {
       ],
       validations: [
         {
-          name: 'required',
-          validator: 'required',
+          name: ValidationName.Required,
           message: 'Address is required',
         },
       ],

@@ -28,15 +28,27 @@ export class FormComponent implements OnInit, AfterViewInit {
       let controlValidators: Validators[] = [];
       if (control.validations) {
         control.validations.forEach(validation => {
-          switch (validation.validator) {
+          switch (validation.name) {
             case 'required':
               controlValidators.push(Validators.required);
               break;
             case 'pattern':
-              controlValidators.push(Validators.pattern(validation.validator));
+              controlValidators.push(Validators.pattern(validation.pattern as string));
               break;
             case 'email':
               controlValidators.push(Validators.email);
+              break;
+            case 'maxlength':
+              controlValidators.push(Validators.maxLength(validation.maxLength as number));
+              break;
+            case 'minlength':
+              controlValidators.push(Validators.minLength(validation.minLength as number));
+              break;
+            case 'max':
+              controlValidators.push(Validators.max(validation.max as number));
+              break;
+            case 'min':
+              controlValidators.push(Validators.min(validation.min as number));
               break;
             default:
               break;
