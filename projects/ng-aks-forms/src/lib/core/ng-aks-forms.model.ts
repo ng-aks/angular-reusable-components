@@ -22,9 +22,24 @@ export interface Options {
 }
 
 export interface Validations {
-    name: string,
-    validator: string,
-    message: string
+    name: ValidationName,
+    pattern?: string,
+    message: string,
+    maxLength?: number,
+    minLength?: number,
+    max?: number, // only for number input
+    min?: number, // only for number input
+
+}
+
+export enum ValidationName {
+    Required = 'required',
+    Pattern ='pattern',
+    Email = 'email',
+    MaxLength = 'maxlength',
+    MinLength = 'minlength',
+    Max = 'max', // only for number input
+    Min = 'min' // only for number input
 }
 
 export enum Layout {

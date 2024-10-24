@@ -27,6 +27,7 @@ now you have to add html part like this
 
 ```html
 <ng-aks-forms [formConfig]="formConfig" (onSubmitForm)="onSubmitForm($event)">
+    <!--your code  here for submit/reset button like below code-->
     <button (click)="onGetForm()" class="btn btn-primary" type="submit">Submit</button>
 </ng-aks-forms>
 ```
@@ -58,9 +59,37 @@ export const FORM_CONFIG: NgAksFormsConfigModel = {
       disabled: true,
       validations: [
         {
-          name: 'required',
-          validator: 'required',
+          name: ValidationName.Required,
           message: 'Name is required',
+        },
+      ],
+    },
+    {
+      type: ControlType.Text,
+      label: 'Address',
+      name: 'address',
+      value: '',
+      validations: [
+        {
+          name: ValidationName.MaxLength,
+          message: 'Address Max Length is 10',
+          maxLength: 10
+        },
+      ],
+    },
+    {
+      type: ControlType.Email,
+      label: 'Email',
+      name: 'email',
+      value: '',
+      validations: [
+        {
+          name: ValidationName.Required,
+          message: 'Email is required',
+        },
+        {
+          name: ValidationName.Email,
+          message: 'Invalid email address',
         },
       ],
     },
@@ -70,26 +99,6 @@ export const FORM_CONFIG: NgAksFormsConfigModel = {
       name: 'city',
       value: 'Gurgaon',
       readonly: true,
-      validations: [],
-    },
-    {
-      type: ControlType.Textarea,
-      label: 'Description',
-      name: 'description',
-      value: '',
-      validations: [
-        {
-          name: 'required',
-          validator: 'required',
-          message: 'Description is required',
-        },
-      ],
-    },
-    {
-      type: ControlType.Number,
-      label: 'Age',
-      name: 'age',
-      value: '',
       validations: [],
     },
     {
@@ -105,8 +114,7 @@ export const FORM_CONFIG: NgAksFormsConfigModel = {
       ],
       validations: [
         {
-          name: 'required',
-          validator: 'required',
+          name: ValidationName.Required,
           message: 'Address is required',
         },
       ],
@@ -145,9 +153,24 @@ export interface Options {
 }
 
 export interface Validations {
-    name: string,
-    validator: string,
-    message: string
+    name: ValidationName,
+    pattern?: string,
+    message: string,
+    maxLength?: number,
+    minLength?: number,
+    max?: number, // only for number input
+    min?: number, // only for number input
+
+}
+
+export enum ValidationName {
+    Required = 'required',
+    Pattern ='pattern',
+    Email = 'email',
+    MaxLength = 'maxlength',
+    MinLength = 'minlength',
+    Max = 'max', // only for number input
+    Min = 'min' // only for number input
 }
 
 export enum Layout {
