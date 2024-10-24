@@ -53,6 +53,20 @@ export const FORM_CONFIG: NgAksFormsConfigModel = {
       validations: [],
     },
     {
+      type: ControlType.Number,
+      label: 'Age',
+      name: 'age',
+      value: '',
+      validations: [
+        {
+          customValidation: {
+            name: 'ageRange',
+            message:"Age range should be between 18 to 45 only"
+          }
+        }
+      ],
+    },
+    {
       type: ControlType.Select,
       label: 'Country',
       name: 'country',
