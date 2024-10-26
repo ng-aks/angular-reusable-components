@@ -1,6 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { FORM_CONFIG } from './core/app.constant';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup, Validators } from '@angular/forms';
+import { ValidationName } from 'projects/ng-aks-forms/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,20 @@ export class AppComponent {
     this.formGroup = e;
   }
   onGetForm() {
-    console.log("this.formGroup>> ",this.formGroup)
+    this.formGroup.controls['age'].addValidators([this.ageRangeValidator]);
+    this.formGroup.controls['age'].updateValueAndValidity();
+    console.log("this.formGroup>> ", this.formGroup)
     if (this.formGroup.valid) {
       console.log("form value", this.formGroup.value);
     } else {
       this.formGroup.markAllAsTouched();
     }
+  }
+
+  ageRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    if (control.value !== undefined && (isNaN(control.value) || control.value < 18 || control.value > 45)) {
+      return { 'ageRange': true };
+    }
+    return null;
   }
 }

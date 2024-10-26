@@ -75,8 +75,15 @@ export class FormComponent implements OnInit, AfterViewInit {
       return '';
     }
     for (let validation of control.validations) {
-      if (formControl.hasError(validation.name)) {
-        return validation.message;
+      if (validation.customValidation) {
+        if (formControl.hasError(validation.customValidation?.name)) {
+          return validation.customValidation?.message;
+        }
+      }
+      if (validation.name) {
+        if (formControl.hasError(validation.name)) {
+          return validation.message;
+        }
       }
     }
     return '';

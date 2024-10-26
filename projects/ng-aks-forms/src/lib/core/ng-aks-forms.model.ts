@@ -22,14 +22,20 @@ export interface Options {
 }
 
 export interface Validations {
-    name: ValidationName,
+    name?: ValidationName,
     pattern?: string,
-    message: string,
+    customValidation?: CustomValidation,
+    message?: string,
     maxLength?: number,
     minLength?: number,
     max?: number, // only for number input
     min?: number, // only for number input
 
+}
+
+export interface CustomValidation{
+    name: string,
+    message: string
 }
 
 export enum ValidationName {
