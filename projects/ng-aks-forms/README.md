@@ -7,7 +7,7 @@ This library will help you to create dynamic forms with help of simple json form
 
 | Angular  | Bootstrap  | ng-aks-forms |
 | :------------ |:------------|:------------|
-| 16.x.x, 17.x.x, 18.x.x    | 5.x.x | 1.x.x |
+| 16.x.x    | 5.x.x | 1.x.x |
 
 ## Setup - How to use reusable dynamic forms in our project
 
@@ -126,6 +126,15 @@ export const FORM_CONFIG: NgAksFormsConfigModel = {
 the above data, you can use your api data or constant data as per your requirement.
 Please make sure, you are using correct data format.
 
+## Dependencies
+
+Please add `"bootstrap": "^5.x.x"` by run command `npm install bootstrap@5`. After install it, 
+
+please add css on global style file or you can import it from `node_modules` also directly, if it is not working. 
+
+`@import '~bootstrap/dist/css/bootstrap.min.css';`
+
+
 ## Models Supports for properties, we are using.
 
 ```ts
@@ -202,14 +211,6 @@ export enum ControlType {
 }
 
 ```
-
-## Dependencies
-
-Please add `"bootstrap": "^5.x.x"` by run command `npm install bootstrap@5`. After install it, 
-
-please add css on global style file or you can import it from `node_modules` also directly, if it is not working. 
-
-`@import '~bootstrap/dist/css/bootstrap.min.css';`
 
 ## Further help
 
