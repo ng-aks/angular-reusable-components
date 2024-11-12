@@ -13,10 +13,10 @@ export class AppComponent {
   formConfig = FORM_CONFIG;
   formGroup!: FormGroup;
 
-  onSubmitForm(e: any) {
+  onGetForm(e: any) {
     this.formGroup = e;
   }
-  onGetForm() {
+  onSubmitForm() {
     this.formGroup.controls['age'].addValidators([this.ageRangeValidator]);
     this.formGroup.controls['age'].updateValueAndValidity();
     console.log("this.formGroup>> ", this.formGroup)

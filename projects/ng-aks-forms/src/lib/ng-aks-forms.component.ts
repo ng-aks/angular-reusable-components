@@ -8,10 +8,11 @@ import { NgAksFormsConfigModel } from './core/ng-aks-forms.model';
 })
 export class NgAksFormsComponent {
   @Input() formConfig!: NgAksFormsConfigModel;
-  @Output() onSubmitForm:EventEmitter<any> = new EventEmitter<any>();
+  @Output() onGetForm:EventEmitter<any> = new EventEmitter<any>();
   @Input() isSubmit:boolean = false;
 
+
   getFormGroup(e:any){
-    this.onSubmitForm.emit(e);
+    this.onGetForm.emit(e);
   }
 }

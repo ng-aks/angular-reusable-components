@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-6">
             Dynamic Forms
-            <ng-aks-forms [formConfig]="formConfig" (onSubmitForm)="onSubmitForm($event)">
-                <button (click)="onGetForm()" class="btn btn-primary" type="submit">Submit</button>
+            <ng-aks-forms [formConfig]="formConfig" (onGetForm)="onGetForm($event)">
+                <button (click)="onSubmitForm()" class="btn btn-primary" type="submit">Submit</button>
             </ng-aks-forms>
         </div>
     </div>

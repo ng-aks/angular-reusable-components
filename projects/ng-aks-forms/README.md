@@ -26,9 +26,9 @@ import { NgAksFormsModule } from '@ng-aks/forms';
 now you have to add html part like this
 
 ```html
-<ng-aks-forms [formConfig]="formConfig" (onSubmitForm)="onSubmitForm($event)">
+<ng-aks-forms [formConfig]="formConfig" (onGetForm)="onGetForm($event)">
     <!--your code  here for submit/reset button like below code-->
-    <button (click)="onGetForm()" class="btn btn-primary" type="submit">Submit</button>
+    <button (click)="onSubmitForm()" class="btn btn-primary" type="submit">Submit</button>
 </ng-aks-forms>
 ```
 After add html part, add `formConfig` in your `.ts` file like this.
@@ -37,10 +37,10 @@ export class AppComponent {
   formConfig = FORM_CONFIG;
   formGroup!: FormGroup;
 
-  onSubmitForm(e: any) {
+  onGetForm(e: any) {
     this.formGroup = e;
   }
-  onGetForm() {
+  onSubmitForm() {
     if (this.formGroup.valid) {
       console.log("form value", this.formGroup.value);
     } else {
