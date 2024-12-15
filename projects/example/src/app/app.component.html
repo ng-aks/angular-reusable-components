@@ -6,5 +6,9 @@
                 <button (click)="onSubmitForm()" class="btn btn-primary" type="submit">Submit</button>
             </ng-aks-forms>
         </div>
+        <div class="col-6">
+            Form Data
+            <pre>{{ formData | json }}</pre>
+        </div>
     </div>
 </div>

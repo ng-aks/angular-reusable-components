@@ -8,6 +8,7 @@ This library will help you to create dynamic forms with help of simple json form
 | Angular  | Bootstrap  | ng-aks-forms |
 | :------------ |:------------|:------------|
 | 16.x.x    | 5.x.x | 1.x.x |
+| 17.x.x    | 5.x.x | 2.x.x |
 
 ## Setup - How to use reusable dynamic forms in our project
 

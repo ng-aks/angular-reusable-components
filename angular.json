@@ -98,10 +98,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "example:build:production"
+              "buildTarget": "example:build:production"
             },
             "development": {
-              "browserTarget": "example:build:development"
+              "buildTarget": "example:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -109,7 +109,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "example:build"
+            "buildTarget": "example:build"
           }
         },
         "test": {
@@ -129,6 +129,39 @@
               "projects/example/src/styles.scss"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "x1": {
+      "projectType": "library",
+      "root": "projects/x1",
+      "sourceRoot": "projects/x1/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/x1/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/x1/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/x1/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/x1/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }
