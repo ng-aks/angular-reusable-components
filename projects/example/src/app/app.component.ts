@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'example';
   formConfig = FORM_CONFIG;
   formGroup!: FormGroup;
+  formData!:(Object);
 
   onGetForm(e: any) {
     this.formGroup = e;
@@ -22,6 +23,7 @@ export class AppComponent {
     console.log("this.formGroup>> ", this.formGroup)
     if (this.formGroup.valid) {
       console.log("form value", this.formGroup.value);
+      this.formData = {...this.formGroup.value};
     } else {
       this.formGroup.markAllAsTouched();
     }
