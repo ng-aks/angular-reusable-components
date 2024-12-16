@@ -216,7 +216,7 @@ export enum ControlType {
 
 ## New Features
 
-Update the library from Angular version 17 to Angular version 18.
+Update new control flow with new features (@if, @for, @switch)
 
 ## Further help
 
