@@ -1,4 +1,5 @@
-import { ControlType, Layout, NgAksFormsConfigModel, ValidationName } from "projects/ng-aks-forms/src/lib/core/ng-aks-forms.model";
+import { ControlType, Layout, NgAksFormsConfigModel, ValidationName } from "../../../../ng-aks-forms/src/public-api";
+
 
 export const FORM_CONFIG: NgAksFormsConfigModel = {
   config: [

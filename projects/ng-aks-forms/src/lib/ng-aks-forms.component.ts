@@ -1,10 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgAksFormsConfigModel } from './core/ng-aks-forms.model';
+import { NgAksFormsConfigModel } from '../public-api';
+import { FormComponent } from "./form/form.component";
 
 @Component({
   selector: 'ng-aks-forms',
-  templateUrl: './ng-aks-forms.component.html',
-  styleUrls: ['./ng-aks-forms.component.scss']
+  standalone: true,
+  imports: [FormComponent],
+  template: `
+    <lib-form [formConfig]="formConfig" (onSubmitForm)="getFormGroup($event)"/>
+    <ng-content/>
+  `,
+  styles: ``
 })
 export class NgAksFormsComponent {
   @Input() formConfig!: NgAksFormsConfigModel;

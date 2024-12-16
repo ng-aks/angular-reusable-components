@@ -9,6 +9,7 @@ This library will help you to create dynamic forms with help of simple json form
 | :------------ |:------------|:------------|
 | 16.x.x    | 5.x.x | 1.x.x |
 | 17.x.x    | 5.x.x | 2.x.x |
+| 18.x.x    | 5.x.x | 3.x.x |
 
 ## Setup - How to use reusable dynamic forms in our project
 
@@ -212,6 +213,10 @@ export enum ControlType {
 }
 
 ```
+
+## New Features
+
+Update the library from Angular version 17 to Angular version 18.
 
 ## Further help
 

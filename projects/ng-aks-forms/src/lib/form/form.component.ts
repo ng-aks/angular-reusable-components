@@ -1,11 +1,14 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Config, NgAksFormsConfigModel } from '../core/ng-aks-forms.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'form-group',
+  selector: 'lib-form',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrl: './form.component.css'
 })
 export class FormComponent implements OnInit, AfterViewInit {
   @Input() formConfig!: NgAksFormsConfigModel;
@@ -13,7 +16,6 @@ export class FormComponent implements OnInit, AfterViewInit {
   dynamicFormGroup!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
-
   ngOnInit(): void {
     this.initDynamicForm();
   }
@@ -21,6 +23,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.onSubmitForm.emit(this.dynamicFormGroup);
   }
+
   initDynamicForm() {
     this.dynamicFormGroup = this.formBuilder.group({});
     let formGroup: Record<string, any> = {};
@@ -60,6 +63,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     this.dynamicFormGroup = this.formBuilder.group(formGroup);
     this.addOtherFeatureInForm();
   }
+
   addOtherFeatureInForm() {
     this.formConfig.config.map(control => {
       if (control.disabled) {
@@ -69,6 +73,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       }
     })
   }
+
   getErrorMessage(control: any) {
     const formControl = this.dynamicFormGroup.get(control.name);
     if (!formControl) {
