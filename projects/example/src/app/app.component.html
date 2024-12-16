@@ -1,14 +1,14 @@
 <div class="container">
-    <div class="row">
-        <div class="col-6">
-            Dynamic Forms
-            <ng-aks-forms [formConfig]="formConfig" (onGetForm)="onGetForm($event)">
-                <button (click)="onSubmitForm()" class="btn btn-primary" type="submit">Submit</button>
-            </ng-aks-forms>
-        </div>
-        <div class="col-6">
-            Form Data
-            <pre>{{ formData | json }}</pre>
-        </div>
-    </div>
+  <div class="row">
+      <div class="col-6">
+          Dynamic Forms
+          <ng-aks-forms [formConfig]="formConfig" (onGetForm)="onGetForm($event)">
+              <button (click)="onSubmitForm()" class="btn btn-primary" type="submit">Submit</button>
+          </ng-aks-forms>
+      </div>
+      <div class="col-6">
+          Form Data
+          <pre>{{ formData | json }}</pre>
+      </div>
+  </div>
 </div>

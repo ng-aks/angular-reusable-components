@@ -1,12 +1,16 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { FORM_CONFIG } from './core/app.constant';
-import { AbstractControl, FormGroup, Validators } from '@angular/forms';
-import { ValidationName } from 'projects/ng-aks-forms/src/public-api';
+import { AbstractControl, FormGroup } from '@angular/forms';
+import { NgAksFormsComponent } from "../../../ng-aks-forms/src/lib/ng-aks-forms.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, NgAksFormsComponent, CommonModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'example';

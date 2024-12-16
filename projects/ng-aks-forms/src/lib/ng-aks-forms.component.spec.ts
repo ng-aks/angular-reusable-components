@@ -6,10 +6,12 @@ describe('NgAksFormsComponent', () => {
   let component: NgAksFormsComponent;
   let fixture: ComponentFixture<NgAksFormsComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [NgAksFormsComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [NgAksFormsComponent]
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(NgAksFormsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
