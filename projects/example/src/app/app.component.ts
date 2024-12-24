@@ -16,7 +16,7 @@ export class AppComponent {
   formGroup!: FormGroup;
   formData!:(Object);
 
-  onGetForm(e: any) {
+  onGetForm(e: FormGroup) {
     this.formGroup = e;
   }
   onSubmitForm() {

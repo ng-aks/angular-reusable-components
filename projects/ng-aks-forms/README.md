@@ -14,14 +14,14 @@ This library will help you to create dynamic forms with help of simple json form
 
 ## Setup - How to use reusable dynamic forms in our project
 
-Run `npm i @ng-aks/forms` to install this library in your project. After install add NgAksFormsComponent in related component file where you want to use this form library.
+Run `npm i @ng-aks/forms` to install this library in your project. After install add `NgAksFormsComponent` in related component file where you want to use this form library.
 
 ```ts
 import { NgAksFormsComponent } from '@ng-aks/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [NgAksFormsComponent],
+  imports: [RouterOutlet, NgAksFormsComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -35,13 +35,13 @@ now you have to add html part like this
     <button (click)="onSubmitForm()" class="btn btn-primary" type="submit">Submit</button>
 </ng-aks-forms>
 ```
-After add html part, add `formConfig` in your `.ts` file like this.
+After add html part, add `formConfig` in your `.ts` file like this or you can use formConfig from constant file as well.
 ```ts
 export class AppComponent {
   formConfig = FORM_CONFIG;
   formGroup!: FormGroup;
 
-  onGetForm(e: any) {
+  onGetForm(e: FormGroup) {
     this.formGroup = e;
   }
   onSubmitForm() {

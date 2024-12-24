@@ -11,7 +11,7 @@ import { Config, NgAksFormsConfigModel } from '../../public-api';
 })
 export class FormComponent implements OnInit, AfterViewInit {
   @Input() formConfig!: NgAksFormsConfigModel;
-  @Output() onSubmitForm: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onSubmitForm: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   dynamicFormGroup!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
