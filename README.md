@@ -10,6 +10,7 @@ This library will help you to create dynamic forms with help of simple json form
 | 16.x.x    | 5.x.x | 1.x.x |
 | 17.x.x    | 5.x.x | 2.x.x |
 | 18.x.x    | 5.x.x | 3.x.x |
+| 19.x.x    | 5.x.x | 4.x.x |
 
 ## Setup - How to use reusable dynamic forms in our project
 
@@ -20,10 +21,9 @@ import { NgAksFormsComponent } from '@ng-aks/forms';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [RouterOutlet, NgAksFormsComponent, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 ```
 
@@ -215,6 +215,10 @@ export enum ControlType {
 }
 
 ```
+
+## New Features
+
+Update the library from Angular version 18 to Angular version 19.
 
 ## Further help
 

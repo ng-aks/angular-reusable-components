@@ -5,7 +5,6 @@ import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'ng-aks-forms',
-  standalone: true,
   imports: [FormComponent],
   template: `
     <lib-form [formConfig]="formConfig" (onSubmitForm)="getFormGroup($event)"/>
