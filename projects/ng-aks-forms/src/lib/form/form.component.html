@@ -1,5 +1,5 @@
 <form [formGroup]="dynamicFormGroup">
-    @for (control of formConfig.config; track $index) {
+    @for (control of formConfig().config; track $index) {
     <div [ngClass]="getLayoutClassForVerticalBlock()">
         @switch (control.type) {
         @case ('select') {
