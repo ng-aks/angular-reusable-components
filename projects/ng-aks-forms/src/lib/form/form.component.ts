@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, input, OnInit, output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Config, NgAksFormsConfigModel } from '../../public-api';
 
@@ -10,8 +10,8 @@ import { Config, NgAksFormsConfigModel } from '../../public-api';
   styleUrl: './form.component.css'
 })
 export class FormComponent implements OnInit, AfterViewInit {
-  @Input() formConfig!: NgAksFormsConfigModel;
-  @Output() onSubmitForm: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  readonly formConfig = input.required<NgAksFormsConfigModel>();
+  onSubmitForm = output<FormGroup>();
   dynamicFormGroup!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
@@ -26,7 +26,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   initDynamicForm() {
     this.dynamicFormGroup = this.formBuilder.group({});
     let formGroup: Record<string, any> = {};
-    this.formConfig.config.map(control => {
+    this.formConfig().config.map(control => {
       let controlValidators: Validators[] = [];
       if (control.validations) {
         control.validations.forEach(validation => {
@@ -64,7 +64,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   addOtherFeatureInForm() {
-    this.formConfig.config.map(control => {
+    this.formConfig().config.map(control => {
       if (control.disabled) {
         this.dynamicFormGroup.get(control.name)?.disable();
       } else {
@@ -94,19 +94,19 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   getLayoutClassForControlGroup(control: Config) {
-    return { 'row': this.formConfig.layout == 'horizontal', 'col-12': this.formConfig.layout == 'vertical' }
+    return { 'row': this.formConfig().layout == 'horizontal', 'col-12': this.formConfig().layout == 'vertical' }
   }
 
   getLayoutClassForHorizontalLabel() {
-    return { 'col-4 col-form-label': this.formConfig.layout == 'horizontal' }
+    return { 'col-4 col-form-label': this.formConfig().layout == 'horizontal' }
   }
 
   getLayoutClassForHorizontalControl() {
-    return { 'col-8': this.formConfig.layout == 'horizontal' }
+    return { 'col-8': this.formConfig().layout == 'horizontal' }
   }
 
   getLayoutClassForVerticalBlock() {
-    return { 'col-12': this.formConfig.layout == 'vertical' }
+    return { 'col-12': this.formConfig().layout == 'vertical' }
   }
 
   getInputControlClass(control: Config) {
@@ -114,7 +114,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   getErrorClass() {
-    return { 'col-8 offset-4': this.formConfig.layout == 'horizontal', 'col-12': this.formConfig.layout == 'vertical' }
+    return { 'col-8 offset-4': this.formConfig().layout == 'horizontal', 'col-12': this.formConfig().layout == 'vertical' }
   }
 
   isError(control: Config) {

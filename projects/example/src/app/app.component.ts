@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { NgAksFormsComponent } from '../../../ng-aks-forms/src/public-api';
 import { CommonModule } from '@angular/common';
 import { FORM_CONFIG } from './core/app.constant';
@@ -7,7 +6,7 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgAksFormsComponent, CommonModule],
+  imports: [NgAksFormsComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -21,7 +21,7 @@ import { NgAksFormsComponent } from '@ng-aks/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgAksFormsComponent, CommonModule],
+  imports: [NgAksFormsComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -218,7 +218,7 @@ export enum ControlType {
 
 ## New Features
 
-Update the library from Angular version 18 to Angular version 19.
+Update the Signal based input/output to component interaction.
 
 ## Further help
 
