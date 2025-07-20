@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
-import { NgAksFormsComponent } from '../../../ng-aks-forms/src/public-api';
-import { CommonModule } from '@angular/common';
-import { FORM_CONFIG } from './core/app.constant';
+import { Component, signal } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
+import { FORM_CONFIG } from './core/app.constant';
+import { NgAksForms } from "../../../ng-aks-forms/src/public-api";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [NgAksFormsComponent, CommonModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [NgAksForms, CommonModule],
+  templateUrl: './app.html',
+  styleUrl: './app.scss'
 })
-export class AppComponent {
+export class App {
+  protected readonly title = signal('example');
   formConfig = FORM_CONFIG;
   formGroup!: FormGroup;
   formData!:(Object);

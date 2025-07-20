@@ -11,19 +11,20 @@ This library will help you to create dynamic forms with help of simple json form
 | 17.x.x    | 5.x.x | 2.x.x |
 | 18.x.x    | 5.x.x | 3.x.x |
 | 19.x.x    | 5.x.x | 4.x.x |
+| 20.x.x    | 5.x.x | 5.x.x |
 
 ## Setup - How to use reusable dynamic forms in our project
 
-Run `npm i @ng-aks/forms` to install this library in your project. After install add `NgAksFormsComponent` in related component file where you want to use this form library.
+Run `npm i @ng-aks/forms` to install this library in your project. After install add `NgAksForms` in related component file where you want to use this form library.
 
 ```ts
-import { NgAksFormsComponent } from '@ng-aks/forms';
+import { NgAksForms } from '@ng-aks/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [NgAksFormsComponent, CommonModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [NgAksForms, CommonModule],
+  templateUrl: './app.html',
+  styleUrl: './app.scss'
 })
 ```
 
@@ -37,7 +38,7 @@ now you have to add html part like this
 ```
 After add html part, add `formConfig` in your `.ts` file like this or you can use formConfig from constant file as well.
 ```ts
-export class AppComponent {
+export class App {
   formConfig = FORM_CONFIG;
   formGroup!: FormGroup;
 
@@ -218,7 +219,7 @@ export enum ControlType {
 
 ## New Features
 
-Update the Signal based input/output to component interaction.
+Update with the latest version 20 and inject based services rather than constructor based.
 
 ## Further help
 
