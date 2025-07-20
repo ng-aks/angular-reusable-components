@@ -1,18 +1,18 @@
 import { Component, input, output } from '@angular/core';
+import { NgAksFormsConfigModel } from './core/ng-aks-forms.model';
 import { FormGroup } from '@angular/forms';
-import { NgAksFormsConfigModel } from '../public-api';
-import { FormComponent } from "./form/form.component";
+import { Form } from "./form/form";
 
 @Component({
   selector: 'ng-aks-forms',
-  imports: [FormComponent],
+  imports: [Form],
   template: `
     <lib-form [formConfig]="formConfig()" (onSubmitForm)="getFormGroup($event)"/>
     <ng-content/>
   `,
   styles: ``
 })
-export class NgAksFormsComponent {
+export class NgAksForms {
   readonly formConfig = input.required<NgAksFormsConfigModel>();
   onGetForm = output<FormGroup>();
 

@@ -1,20 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, input, OnInit, output } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Config, NgAksFormsConfigModel } from '../../public-api';
+import { Component, inject, input, output } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Config, NgAksFormsConfigModel } from '../core/ng-aks-forms.model';
 
 @Component({
   selector: 'lib-form',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.css'
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './form.html',
+  styleUrl: './form.css'
 })
-export class FormComponent implements OnInit, AfterViewInit {
+export class Form {
   readonly formConfig = input.required<NgAksFormsConfigModel>();
   onSubmitForm = output<FormGroup>();
   dynamicFormGroup!: FormGroup;
+  formBuilder = inject(FormBuilder)
 
-  constructor(private formBuilder: FormBuilder) { }
   ngOnInit(): void {
     this.initDynamicForm();
   }
