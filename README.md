@@ -221,9 +221,15 @@ export enum ControlType {
 
 ```
 
-## New Features
+## How to publish npm library
 
-Update with the latest version 20 and inject based services rather than constructor based.
+- Run command `npm run build <library-name>`
+- Please verify that command is mentioned in `package.json` with related lib name `"pack-lib": "cd dist/<library-name> && npm pack"` – on `package.json`
+- Run command `npm run pack-lib`
+- After run above command, you will get updated `.tgz` file like `<library-name>-1.0.0.tgz`
+- Run command `npm login`
+- After logged in successfully on npm then Finally run `npm publish dist/<library-name>/<library-name>-1.0.0.tgz -–access=public` 
+- After last npm publish command, you will get update version on console and you can also check on npm.
 
 ## Further help
 
