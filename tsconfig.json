@@ -8,6 +8,9 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "paths": {
+      "ng-aks-editor": [
+        "./dist/ng-aks-editor"
+      ],
       "ng-aks-forms": [
         "./dist/ng-aks-forms"
       ]
@@ -40,6 +43,18 @@
     },
     {
       "path": "./projects/ng-aks-forms/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-aks-editor/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-aks-editor/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/example-editor/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/example-editor/tsconfig.spec.json"
     }
   ]
 }

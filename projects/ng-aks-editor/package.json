@@ -1,0 +1,22 @@
+{
+  "name": "@ng-aks/editor",
+  "version": "1.0.0",
+  "author": "Ankit Kumar Sharma",
+   "keywords": ["angular","dynamic text editor","editor","dynamic editor","angular text editor","rich text editor","text","npm","custom text editor","custom editor"],
+   "repository": {
+     "type": "git",
+     "url": "https://github.com/ng-aks/angular-reusable-components"
+   },
+   "bugs": {
+     "url": "https://github.com/ng-aks/angular-reusable-components/issues"
+   },
+   "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
