@@ -1,0 +1,21 @@
+<div class="editor-container">
+    <div class="toolbar">
+        <button class="toolbar-btn" (click)="formatText('bold')" title="Bold">
+            <b>B</b>
+        </button>
+        <button class="toolbar-btn" (click)="formatText('italic')" title="Italic">
+            <i>I</i>
+        </button>
+        <button class="toolbar-btn" (click)="formatText('underline')" title="Underline">
+            <u>U</u>
+        </button>
+        <select class="toolbar-btn" (change)="setFontSize($event)" title="Font Size">
+            <option value="">Font Size</option>
+            <option value="12px">12px</option>
+            <option value="16px">16px</option>
+            <option value="20px">20px</option>
+            <option value="24px">24px</option>
+        </select>
+    </div>
+    <div #editor contenteditable="true" class="editor" (input)="saveContent()"></div>
+</div>

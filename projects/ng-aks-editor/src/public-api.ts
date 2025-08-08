@@ -3,3 +3,4 @@
  */
 
 export * from './lib/ng-aks-editor';
+export * from './lib/ng-aks-editor.service';

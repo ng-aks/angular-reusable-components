@@ -1,63 +1,42 @@
-# NgAksEditor
+# Angular Custom Rich Text Editor
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+A Rich text editor based in angular, that can implement with multiple text editing features with image upload, add hyper links and more features.
 
-## Code scaffolding
+## Versions Info
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+| Angular  | Bootstrap  | ng-aks-editor |
+| :------------ |:------------|:------------|
+| 20.x.x    | 5.x.x | 1.x.x |
 
-```bash
-ng generate component component-name
+## Setup - How to use Rich Text Editor in our project
+
+Run `npm i @ng-aks/editor` to install this library in your project. After install add `NgAksEditor` in related component file where you want to use this form library.
+
+```ts
+import { NgAksEditor } from '@ng-aks/editor';
+
+@Component({
+  selector: 'app-root',
+  imports: [NgAksEditor, CommonModule],
+  templateUrl: './app.html',
+  styleUrl: './app.scss'
+});
+editorService = inject(NgAksEditorService);
+//this.editorService.getEditorContent() // for get editor content
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+now you have to add html part like this
 
-```bash
-ng generate --help
+```html
+<ng-aks-editor/>
 ```
+After add html part, to get editor content, inject `NgAksEditorService` in your `.ts` file use that file to get editor content like below.
+`editorService = inject(NgAksEditorService);` in `.ts` file and use `this.editorService.getEditorContent()` for get editor content.
 
-## Building
+## Further help
 
-To build the library, run:
+To get more help on the this , please contact to [Ankit Kumar Sharma](https://www.ankitkumarsharma.com/)
 
-```bash
-ng build ng-aks-editor
-```
+If you get any issue, error or query, you can raise it on [GitHub Issues](https://github.com/ng-aks/angular-reusable-components/issues) also.
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/ng-aks-editor
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Thanks

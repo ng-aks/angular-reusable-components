@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "pack-lib": "cd dist/ng-aks-forms && npm pack"
+    "pack-lib-form": "cd dist/ng-aks-forms && npm pack",
+    "pack-lib-editor": "cd dist/ng-aks-editor && npm pack"
   },
   "private": true,
   "dependencies": {

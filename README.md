@@ -9,11 +9,15 @@ This library will help you to create dynamic forms with help of simple json form
 
 Run `npm i @ng-aks/forms` to install this library in your project. After install add `NgAksForms` in related component file where you want to use this form library.
 
+[NPM URL](https://www.npmjs.com/package/@ng-aks/forms)
+
 ## 2. Angular Custom Rich Text Editor
 
 A Rich text editor based in angular, that can implement with multiple text editing features with image upload, add hyper links and more features.
 
 Run `npm i @ng-aks/editor` to install this library in your project. After install add `NgAksEditor` in related component file where you want to use this form library.
+
+[NPM URL](https://www.npmjs.com/package/@ng-aks/editor)
 
 
 ## How to publish npm library

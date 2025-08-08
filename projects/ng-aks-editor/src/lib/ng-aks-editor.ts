@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { RichTextEditor } from "./rich-text-editor/rich-text-editor";
 
 @Component({
-  selector: 'lib-ng-aks-editor',
-  imports: [],
+  selector: 'ng-aks-editor',
+  imports: [RichTextEditor],
   template: `
-    <p>
-      ng-aks-editor works!
-    </p>
+    <lib-rich-text-editor/>
   `,
   styles: ``
 })
