@@ -55,6 +55,12 @@
     },
     {
       "path": "./projects/example-editor/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/example-forms/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/example-forms/tsconfig.spec.json"
     }
   ]
 }

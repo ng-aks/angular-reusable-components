@@ -1,8 +1,8 @@
-import { Component, signal } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
-import { FORM_CONFIG } from './core/app.constant';
+import { Component } from '@angular/core'; 
 import { NgAksForms } from "../../../ng-aks-forms/src/public-api";
 import { CommonModule } from '@angular/common';
+import { AbstractControl, FormGroup } from '@angular/forms';
+import { FORM_CONFIG } from './core/app.constant';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('example');
   formConfig = FORM_CONFIG;
   formGroup!: FormGroup;
   formData!:(Object);
