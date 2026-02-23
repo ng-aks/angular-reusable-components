@@ -37,3 +37,6 @@ To get more help on the this , please contact to [Ankit Kumar Sharma](https://ww
 If you get any issue, error or query, you can raise it on [GitHub Issues](https://github.com/ng-aks/angular-dynamic-forms/issues) also.
 
 Thanks
+
+## More Updates
+Coming soon
